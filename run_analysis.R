@@ -34,7 +34,6 @@ colnames(FullDataset)  <- c("subject", "activity", desiredFeatures.names)
 FullDataset$activity <- factor(FullDataset$activity, levels = activityLabels[,2], labels = activityLabels[,2])
 FullDataset$subject  <- as.factor(FullDataset$subject)
 
-write.table(FullDataset, "tidy.txt", row.names = FALSE)
 
 # Step 5 From the data set in step 4, creates a second, independent tidy data set with the average of each 
 # variable for each activity and each subject.
@@ -45,4 +44,4 @@ library(reshape)
 FullDataset.melted <- melt(FullDataset, id = c("subject", "activity"))
 FullDataset.mean <- dcast(FullDataset.melted, subject + activity ~ variable, mean)
 
-write.table(FullDataset.mean, "tidyMean.txt", row.names = FALSE)
+write.table(FullDataset.mean, "tidy.txt", row.names = FALSE)
